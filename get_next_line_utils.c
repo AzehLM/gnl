@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 15:50:30 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/12 17:29:34 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:33:38 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strjoin(const char *s1, char const *s2)
 	size_t		i;
 	size_t		j;
 	char		*res;
-	
+
 	if (!s1 || !s2)
 		return (NULL);
 	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
@@ -76,7 +76,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t		i;
 
 	if (!s)
-		return (NULL);	
+		return (NULL);
 	res = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!res)
 		return (NULL);
@@ -95,9 +95,10 @@ char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
 
+	i = 0;
 	while (s && s[i] && s[i] != (char) c)
 		i++;
-	if (s[i] == c)
+	if (s[i] == (char) c)
 		return ((char *) &s[i]);
 	return (NULL);
 }

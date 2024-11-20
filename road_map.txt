@@ -1,0 +1,9 @@
+LEARN about STATIC VARIABLES
+
+LEARN about open() & read()
+
+OPEN:
+
+Dans la librairie #include <fcntl.h>
+
+

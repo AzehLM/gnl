@@ -2,8 +2,16 @@ LEARN about STATIC VARIABLES
 
 LEARN about open() & read()
 
-OPEN:
+OPEN: Dans la librairie #include <fcntl.h>
 
-Dans la librairie #include <fcntl.h>
+strjoin : remplacer :                    par
+if (!s2)                                 if (s2)
+	return NULL							 	return s1
 
 
+
+
+OPTI ? eviter de parcourir le buffer si inutile ? = buffer initialisé avec bzero ? (\0)
+
+
+Si declaration de BUFFER_SIZE dans .h, check #ifndef BUFFER_SIZE !!!

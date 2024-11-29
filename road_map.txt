@@ -1,6 +1,8 @@
 LEARN about STATIC VARIABLES
-
+-- done
 LEARN about open() & read()
+-- almost done
+- recheck return values (specificly errors)
 
 OPEN: Dans la librairie #include <fcntl.h>
 
@@ -9,9 +11,22 @@ if (!s2)                                 if (s2)
 	return NULL							 	return s1
 
 
-
+/!\ test compilation avec BUFFER_SIZE= (INT_MAX + 1)
+/!\ interdiction read de 0
 
 OPTI ? eviter de parcourir le buffer si inutile ? = buffer initialisé avec bzero ? (\0)
 
-
 Si declaration de BUFFER_SIZE dans .h, check #ifndef BUFFER_SIZE !!!
+
+apres FREE -> set a NULL -> avoiding dangling pointers
+
+objectif :
+- read BUFFER_SIZE
+-- si il y a un \n ou \0 durant la lecture de BUFFER_SIZE
+-- on malloc + stock dans la variable retournée
+
+-- si il n'y a pas de \n ou \0
+-- on stock dans la variable que l'on va retourner puis read BUFFER_SIZE + strjoin jusqu'au \n ou \0
+
+-- si rien a read
+-- return NULL

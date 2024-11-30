@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 15:50:30 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/30 17:52:42 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/30 20:41:22 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		return (NULL);
 	i = -1;
 	while (s1[++i])
-	{
 		res[i] = s1[i];
-		i++;
-	}
 	i = -1;
 	while (s2[++i])
 		res[len_s1 + i] = s2[i];

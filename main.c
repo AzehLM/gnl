@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:39:44 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/30 17:56:41 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/30 20:45:12 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,37 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int	main(int argc, char **argv)
-{
-	int		fd = 0;
-	char	*line;
+// int	main(int argc, char **argv)
+// {
+// 	int		fd = 0;
+// 	char	*line;
 
-	if (argc != 2)
-	{
-		printf("Usage: %s <file>\n", argv[0]);
-		return (1);
-	}
+// 	if (argc != 2)
+// 	{
+// 		printf("Usage: %s <file>\n", argv[0]);
+// 		return (1);
+// 	}
 	
-	if (fd == -1)
-	{
-		perror("Error opening file");
-		return (1);
-	}
-	int	i = 1;
-	while (i < argc)
-	{
-		fd = open(argv[i], O_RDONLY);
-		while ((line = get_next_line(fd)) != NULL)
-		{
-			printf("|-%s-|", line);
-			free(line);
-		}
-		printf("%s\n", get_next_line(fd));
-		close(fd);
-		i++;
-	}
-	return (0);
-}
+// 	if (fd == -1)
+// 	{
+// 		perror("Error opening file");
+// 		return (1);
+// 	}
+// 	int	i = 1;
+// 	while (i < argc)
+// 	{
+// 		fd = open(argv[i], O_RDONLY);
+// 		while ((line = get_next_line(fd)) != NULL)
+// 		{
+// 			printf("|-%s-|", line);
+// 			free(line);
+// 		}
+// 		printf("%s\n", get_next_line(fd));
+// 		close(fd);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 // int	main(int argc, char **argv)
 // {
@@ -106,17 +106,18 @@ int	main(int argc, char **argv)
 // }
 
 
-// int main() 
-// {
-//     int fd = open("bible.txt", O_RDONLY);
-//     char *line;
+int main() 
+{
+    int fd = open("text.txt", O_RDONLY);
+    char *line;
 
-//     while ((line = get_next_line(fd)) != NULL) 
-// 	{
-//         printf("%s", line);
-//         free(line);
-//     }
+    while ((line = get_next_line(fd)) != NULL) 
+	{
+        printf("%s", line);
+        free(line);
+		sleep(1);
+    }
 
-//     close(fd);
-//     return (0);
-// }
+    close(fd);
+    return (0);
+}

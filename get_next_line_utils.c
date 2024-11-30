@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 15:50:30 by gueberso          #+#    #+#             */
-/*   Updated: 2024/11/13 16:33:38 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:45:33 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,31 +42,32 @@ char	*ft_strdup(const char *str)
 	return (dup);
 }
 
-char	*ft_strjoin(const char *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t		i;
-	size_t		j;
-	char		*res;
+	ssize_t	len_s1;
+	char	*res;
+	ssize_t	i;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
-	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
+	len_s1 = ft_strlen(s1);
+	res = malloc(sizeof(char) * (len_s1 + ft_strlen(s2) + 1));
 	if (!res)
 		return (NULL);
-	i = 0;
-	while (s1 && s1[i])
+	i = -1;
+	while (s1[++i])
 	{
 		res[i] = s1[i];
 		i++;
 	}
-	j = 0;
-	while (s2 && s2[j])
-	{
-		res[i] = s2[j];
-		i++;
-		j++;
-	}
-	res[i] = '\0';
+	i = -1;
+	while (s2[++i])
+		res[len_s1 + i] = s2[i];
+	res[len_s1 + i] = '\0';
 	return (res);
 }
 
@@ -74,18 +75,23 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char		*res;
 	size_t		i;
+	size_t		s_len;
 
 	if (!s)
 		return (NULL);
-	res = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (NULL);
+	if (len > s_len - start)
+		len = s_len - start;
+	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
 	i = 0;
 	while (i < len)
 	{
-		res[i] = s[start];
+		res[i] = s[start + i];
 		i++;
-		start++;
 	}
 	res[i] = '\0';
 	return (res);
@@ -95,6 +101,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s && s[i] && s[i] != (char) c)
 		i++;

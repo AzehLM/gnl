@@ -30,3 +30,80 @@ objectif :
 
 -- si rien a read
 -- return NULL
+
+
+1. Analyse des Contraintes
+Vous devez gérer la lecture ligne par ligne :
+
+Chaque ligne retournée doit inclure un \n s'il est présent.
+Si le fichier ne finit pas par un \n, la dernière ligne doit être retournée sans le \n.
+Fonctionnement en boucle :
+
+À chaque appel, get_next_line doit conserver l'état de lecture précédent (grâce à un static).
+Gérer les cas limites :
+
+EOF, erreur de read, fichiers vides, ou lignes très longues.
+Bonus :
+
+Gérer plusieurs fd simultanément.
+
+2. Étapes :
+Valider les entrées :
+
+Vérifiez que fd est valide (≥ 0).
+Assurez-vous que BUFFER_SIZE est strictement positif.
+Initialiser les Buffers :
+
+Utilisez une variable static pour conserver les données entre les appels.
+Exemple : Un tableau statique char *buffers[MAX_FD].
+Lire et Accumuler les Données :
+
+Utilisez read(fd, buffer, BUFFER_SIZE) pour lire le fichier.
+Concaténez les données lues avec celles déjà présentes dans le buffer du fd.
+Extraire une Ligne :
+
+Recherchez le caractère \n dans le buffer.
+Si trouvé, retournez la ligne et mettez à jour le buffer pour exclure les données déjà lues.
+Si non trouvé, continuez à lire jusqu'à EOF.
+Gérer les Retours :
+
+Retournez la ligne lue si disponible.
+Retournez NULL si EOF est atteint ou en cas d'erreur.
+3. Cas à Gérer
+a. Lecture Standard
+Une ligne se termine par \n.
+Exemple : Le fichier contient "Hello\nWorld\n".
+Appel 1 → "Hello\n".
+Appel 2 → "World\n".
+b. Fin de Fichier
+Le fichier ne se termine pas par \n.
+Exemple : Le fichier contient "Hello\nWorld".
+Appel 1 → "Hello\n".
+Appel 2 → "World".
+Appel 3 → NULL.
+c. Ligne Très Longue
+Une ligne dépasse BUFFER_SIZE.
+Lire par blocs jusqu'à ce que la ligne complète soit disponible.
+d. Fichier Vide
+Le fichier contient "".
+Appel 1 → NULL.
+e. Gestion de Plusieurs FD
+Appeler get_next_line sur plusieurs fd doit retourner les lignes respectives pour chaque fichier sans interférence.
+f. Erreur de Lecture
+Si une erreur survient, la fonction retourne NULL.
+
+
+Cas a gerer:
+- La ligne llue est plus longue que BUFFER_SIZE
+- La ligne lue atteint la fin du fichier
+- Plusieurs fd utilise simultanément (bonus)
+
+-- Lecture normale: pas de \n dans BUFFER_SIZE
+--- remplir le buffer avec read;
+--- retourner tout le contenu s'il n'y a pas de \n
+
+-- Lecture avec \n dans le BUFFER_SIZE
+--- identifier la pos du \n
+--- Separer la partie avant le \n (quil faut return) et converser le reste pour le prochain appel de gnl
+
+-- Fin du fichier atteint : read 

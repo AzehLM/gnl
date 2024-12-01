@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:15:14 by gueberso          #+#    #+#             */
-/*   Updated: 2024/12/01 09:42:35 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/12/01 16:47:23 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ char	*get_next_line(int fd)
 	if (!buffer[fd])
 		buffer[fd] = ft_strdup("");
 	buffer[fd] = ft_read_file(fd, buffer[fd]);
+	if (!buffer[fd] || buffer[fd][0] == '\0')
+	{
+		free(buffer[fd]);
+		buffer[fd] = NULL;
+	}
 	if (!buffer[fd])
 		return (NULL);
 	line = ft_get_line(buffer[fd]);

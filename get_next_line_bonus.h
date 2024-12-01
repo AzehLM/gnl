@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 15:41:25 by gueberso          #+#    #+#             */
-/*   Updated: 2024/12/01 18:33:20 by gueberso         ###   ########.fr       */
+/*   Created: 2024/12/01 20:53:26 by gueberso          #+#    #+#             */
+/*   Updated: 2024/12/01 20:53:30 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h> // read + ssize_t size_t
 # include <stdlib.h> // malloc - free

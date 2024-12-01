@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:39:44 by gueberso          #+#    #+#             */
-/*   Updated: 2024/12/01 12:27:19 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/12/01 20:03:10 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 	{
 		char	*line_std;
 
-		printf("CTRL+D pour terminer :\n");
+		printf("CTRL+D pour terminer (CTRL+F kill the program):\n");
 		while ((line_std = get_next_line(0)) != NULL)
 		{
 			printf("%s", line_std);
@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 		fd[i - 1] = open(av[i], O_RDONLY);
 		if (fd[i - 1] == -1)
 		{
-			perror(av[i]);
+			//perror(av[i]);
 			lines[i - 1] = NULL;
 		}
 		else
@@ -75,3 +75,39 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
+
+// int	main(int argc, char **argv)
+// {
+// 	int		fd;
+// 	char	*line;
+
+// 	if (argc != 2)
+// 	{
+// 		printf("Usage: %s <file>\n", argv[0]);
+// 		return (1);
+// 	}
+// 	(void) argc;
+// 	(void) argv;
+// 	fd = open(argv[1], O_RDONLY);
+// 	if (fd == -1)
+// 	{
+// 		perror("Error opening file");
+// 		return (1);
+// 	}
+// 	int i = 0;
+// 	while (i < 10)
+// 	{
+// 		fd = open(argv[i], O_RDONLY);
+// 		line = get_next_line(fd);
+// 		printf("%s", line);
+// 		free(line);
+// 		i++;
+// 	}
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close(0);
+// 	return (0);
+// }

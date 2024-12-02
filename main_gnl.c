@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	{
 		char	*line_std;
 
-		printf("CTRL+D pour terminer (CTRL+F kill the program):\n");
+		printf("CTRL+D pour terminer (CTRL+C kills the program):\n");
 		while ((line_std = get_next_line(0)) != NULL)
 		{
 			printf("%s", line_std);

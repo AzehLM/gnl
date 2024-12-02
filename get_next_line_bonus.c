@@ -6,13 +6,13 @@
 /*   By: gueberso <gueberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:15:14 by gueberso          #+#    #+#             */
-/*   Updated: 2024/12/01 21:01:00 by gueberso         ###   ########.fr       */
+/*   Updated: 2024/12/01 21:51:30 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*get_line(char *buffer)
+char	*get_line_v(char *buffer)
 {
 	char	*line;
 	int		i;
@@ -98,7 +98,7 @@ char	*get_next_line(int fd)
 	}
 	if (!buffer[fd])
 		return (NULL);
-	line = get_line(buffer[fd]);
+	line = get_line_v(buffer[fd]);
 	old_buffer = buffer[fd];
 	buffer[fd] = clean_buffer(buffer[fd]);
 	free(old_buffer);

@@ -1,4 +1,0 @@
-1ere ligne
-2e ligne
-3eme ligne mais plus grande que BUFFER_SIZE
-4eme ligne

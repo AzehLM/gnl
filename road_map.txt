@@ -107,3 +107,10 @@ Cas a gerer:
 --- Separer la partie avant le \n (quil faut return) et converser le reste pour le prochain appel de gnl
 
 -- Fin du fichier atteint : read 
+
+
+
+
+Explication step by step de mon GNL:
+
+- 

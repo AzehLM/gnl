@@ -18,7 +18,7 @@
 int	main(int ac, char **av)
 {
 	int		fd[ac - 1];
-	char	*lines[ac - 1];
+	char		*lines[ac - 1];
 	int		files_left;
 	int		i;
 
